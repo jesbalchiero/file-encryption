@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/jesbalchiero/file-encrypt/filecrypt"
+	"github.com/jesbalchiero/file-encryption/filecrypt"
 	"golang.org/x/term"
 )
 
@@ -47,7 +47,7 @@ func printHelp() {
 
 func encryptHandle() {
 	if len(os.Args) < 3 {
-		fmt.Println("Missing the path to the file. For more info, run go run . help")
+		println("Missing the path to the file. For more info, run go run . help")
 		os.Exit(0)
 	}
 
@@ -66,7 +66,7 @@ func encryptHandle() {
 
 func decryptHandle() {
 	if len(os.Args) < 3 {
-		fmt.Println("Missing the path to the file. For more info, run go run . help")
+		println("Missing the path to the file. For more info, run go run . help")
 		os.Exit(0)
 	}
 
@@ -100,11 +100,7 @@ func getPassword() []byte {
 }
 
 func validatePassword(password []byte, confirmationPassword []byte) bool {
-	if !bytes.Equal(password, confirmationPassword) {
-		return false
-	}
-
-	return true
+	return bytes.Equal(password, confirmationPassword)
 }
 
 func validateFile(file string) bool {
